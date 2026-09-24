@@ -7,16 +7,8 @@ import java.nio.file.Path;
 public class HtmlParser {
 
     public static void main(String[] args) throws Exception {
-
-        // Read HTML from file
-        String html = Files.readString(
-                Path.of("google.html")
-        );
-
-        // Parse HTML
+        String html = Files.readString(Path.of("google.html"));
         Document document = Jsoup.parse(html);
-
-        // Print DOM tree
         printTree(document, 0);
     }
 
