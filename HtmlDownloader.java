@@ -3,8 +3,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-
-
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class HtmlDownloader {
     private final HttpClient client;
@@ -34,7 +34,8 @@ public class HtmlDownloader {
         HtmlDownloader downloader = new HtmlDownloader();
         try {
             String html = downloader.download("https://google.com");
-            System.out.println(html);
+            Files.writeString(Path.of("google.html"), html);
+            System.out.println("Downloaded " + html.length() + " characters");
         }
         catch(Exception e){
             System.out.println("Download Failed: " + e.getMessage());
